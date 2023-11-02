@@ -4,8 +4,8 @@ import numpy as np
 import serial
 import time
 
-
-teensy = serial.Serial(port="COM4", baudrate=115200, timeout=.1)
+#This is for sending serial information to the teensy
+#teensy = serial.Serial(port="COM4", baudrate=115200, timeout=.1)
 # Create a VideoCapture object and read from input file 
 cap = cv2.VideoCapture('world.mp4') 
 
