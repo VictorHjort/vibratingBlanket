@@ -65,6 +65,7 @@ def playVideo(fileName):
 	cv2.destroyAllWindows()
 
 def sendCommand(vibrationIntensity):
+ 
     	
 
 serialInst.baudrate = 9600
