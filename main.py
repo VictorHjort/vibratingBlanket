@@ -1,12 +1,28 @@
 # importing libraries 
 import cv2 
 import numpy as np 
-import serial
+import serial.tools.list_ports
 import time
 
-#This is for sending serial information to the teensy
-#teensy = serial.Serial(port="COM4", baudrate=115200, timeout=.1)
- 
+#Declaring variables
+#Port variables
+ports = serial.tools.list_ports.comports()
+serialInst = serial.Serial()
+portsList = []
+#Vibration variables
+intnesity = ['OFF','LOW','MEDIUM','HIGH']
+
+
+def choosePort():
+ for onePort in ports:
+  portsList.append[onePort]
+ val = input("Select port: COM")
+ print("Chosen port: COM" + str(val))
+ for x in range(0, len(portsList)):
+  if portsList[x].starswith("COM" + str(val)):
+   portVar = "COM" + str(val)
+ return portVar
+
 def playVideo(fileName):
     # Create a VideoCapture object and read from input file 
 	cap = cv2.VideoCapture(fileName) 
@@ -47,4 +63,13 @@ def playVideo(fileName):
 
 	# Closes all the frames 
 	cv2.destroyAllWindows()
-def sendSerial(intensity):
+
+def sendCommand(vibrationIntensity):
+    	
+
+serialInst.baudrate = 9600
+serialInst.port = choosePort()
+serialInst.open()
+
+
+playVideo("world.mp4")
