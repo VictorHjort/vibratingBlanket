@@ -1,6 +1,7 @@
 # importing libraries 
 import cv2 
 import numpy as np 
+import serial
 import serial.tools.list_ports
 import time
 
@@ -14,8 +15,8 @@ portsList = []
 spots = ['LEFT','RIGHT','BACK','FRONT']
 intnesity = ['OFF','LOW','MEDIUM','HIGH']
 vibrationDictionary = {
- 20 : (spots[0],intnesity[3]),
- 45 : (spots[1],intnesity[2])
+ 100 : (spots[0],intnesity[3]),
+ 390 : (spots[1],intnesity[2])
 }
 
 
@@ -23,7 +24,8 @@ vibrationDictionary = {
 
 def choosePort():
  for onePort in ports:
-  portsList.append[onePort]
+  portsList.append(onePort)
+  print(onePort)
  val = input("Select port: COM")
  print("Chosen port: COM" + str(val))
  for x in range(0, len(portsList)):
@@ -33,7 +35,8 @@ def choosePort():
 
 def sendCommand(cmd):
  for i in cmd:
-  serialInst.write(i.encode('utf-8'))   
+  serialInst.write(i.encode('utf-8'))  
+  print(i) 
  
 def playVideo(fileName, vibrationDict):
  # Create a VideoCapture object and read from input file 
@@ -55,6 +58,7 @@ def playVideo(fileName, vibrationDict):
    #If framenumber in dictionary send spot and intensity to microcontroller
    if frameNum in vibrationDict:
     sendCommand(vibrationDict[frameNum])
+    print("bug detection")
    frameNum += 1
    # Press Q on keyboard to exit 
    if cv2.waitKey(25) & 0xFF == ord('q'): 
@@ -73,6 +77,11 @@ def playVideo(fileName, vibrationDict):
 
 def run():
  serialInst.baudrate = 9600
- serialInst.port = choosePort()
+ #randomString = choosePort()
+ serialInst.port = "COM9"
  serialInst.open()
  playVideo("world.mp4", vibrationDictionary)
+ 
+
+
+run()
