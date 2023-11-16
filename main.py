@@ -33,7 +33,9 @@ def choosePort():
 
 
 def sendCommand(cmd):
- serialInst.write(cmd.encode('utf-8'))
+ for i in cmd:
+  serialInst.write(i.encode('utf-8'))   
+ 
  
 
 def playVideo(fileName, vibrationDict):
@@ -51,10 +53,11 @@ def playVideo(fileName, vibrationDict):
   if ret == True: 
    # Display the resulting frame 
    cv2.imshow('Frame', frame) 
+   #printing framenumber
    print(frameNum)
+   #If framenumber in dictionary send spot and intensity to microcontroller
    if frameNum in vibrationDict:
-    for frameNun, value in vibrationDict:
-     
+    sendCommand(vibrationDict[frameNum])
    frameNum += 1
    # Press Q on keyboard to exit 
    if cv2.waitKey(25) & 0xFF == ord('q'): 
