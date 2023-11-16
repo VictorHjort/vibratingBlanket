@@ -31,13 +31,10 @@ def choosePort():
    portVar = "COM" + str(val)
  return portVar
 
-
 def sendCommand(cmd):
  for i in cmd:
   serialInst.write(i.encode('utf-8'))   
  
- 
-
 def playVideo(fileName, vibrationDict):
  # Create a VideoCapture object and read from input file 
  cap = cv2.VideoCapture(fileName) 
@@ -78,4 +75,4 @@ def run():
  serialInst.baudrate = 9600
  serialInst.port = choosePort()
  serialInst.open()
- playVideo("world.mp4")
+ playVideo("world.mp4", vibrationDictionary)
