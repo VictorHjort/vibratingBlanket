@@ -57,6 +57,15 @@ def placementWithIntensity(intensityArray, placementArray):
                 placeIntensityArray.append('15')
             if intensityArray[count] == "HIGH":
                 placeIntensityArray.append('16')
+        if i == "ALL":
+            if intensityArray[count] == "OFF":
+                placeIntensityArray.append('17')
+            if intensityArray[count] == "LOW":
+                placeIntensityArray.append('18')
+            if intensityArray[count] == "MEDIUM":
+                placeIntensityArray.append('19')
+            if intensityArray[count] == "HIGH":
+                placeIntensityArray.append('20')
     return placeIntensityArray
     
 def write_read(x): 

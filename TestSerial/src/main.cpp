@@ -84,6 +84,34 @@ void loop() {
 		case 16:
 		analogWrite(BACK, high);
 		break;
+		
+		case 17:
+		analogWrite(LEFT, turnOff);
+		analogWrite(RIGHT, turnOff);
+		analogWrite(FRONT, turnOff);
+		analogWrite(BACK, turnOff);
+		break;
+
+		case 18:
+		analogWrite(LEFT, low);
+		analogWrite(RIGHT, low);
+		analogWrite(FRONT, low);
+		analogWrite(BACK, low);
+		break;
+
+		case 19:
+		analogWrite(LEFT, medium);
+		analogWrite(RIGHT, medium);
+		analogWrite(FRONT, medium);
+		analogWrite(BACK, medium);
+		break;
+
+		case 20:
+		analogWrite(LEFT, high);
+		analogWrite(RIGHT, high);
+		analogWrite(FRONT, high);
+		analogWrite(BACK, high);
+		break;
 	}
 	var = 0;
 } 
