@@ -5,11 +5,12 @@ import cv2
 from ffpyplayer.player import MediaPlayer
 import pandas as pd
 
-arduino = serial.Serial(port='COM9', baudrate=115200, timeout=.1) 
+arduino = serial.Serial(port='COM3', baudrate=115200, timeout=.1) 
 
-
-
-data = pd.read_csv(r"C:\Users\Victor Hjort\Documents\TestSerial\src\clips\anger1\anger1.csv")
+videoChoice = 0
+csvPaths = [r"C:\Users\Victor Hjort\Documents\TestSerial\src\clips\anger1\anger1.csv", r"C:\Users\Victor Hjort\Documents\TestSerial\src\clips\happiness1\happiness1.csv"]
+videoPaths = [r"C:\Users\Victor Hjort\Documents\TestSerial\src\clips\anger1\anger1.mp4", r"C:\Users\Victor Hjort\Documents\TestSerial\src\clips\happiness1\happiness1.mp4"]
+data = pd.read_csv(csvPaths[videoChoice])
 df = pd.DataFrame(data)
 print(data)
 intensity = df["Intensity"].values.tolist()
@@ -126,7 +127,7 @@ def playVideo(fileName, frameChoice, placementAndIntensity):
 
 
 mainArray = placementWithIntensity(intensity, placement)
-playVideo(r"C:\Users\Victor Hjort\Documents\TestSerial\src\clips\anger1\anger1.mp4", when, mainArray)
+playVideo(videoPaths[videoChoice], when, mainArray)
 
     
 

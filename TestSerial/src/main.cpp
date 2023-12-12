@@ -1,14 +1,14 @@
 #include <Arduino.h> 
 
-int LEFT = 2;
-int RIGHT = 3;
-int FRONT = 4;
-int BACK = 5;
+int LEFT = 1;
+int RIGHT = 2;
+int FRONT = 3;
+int BACK = 6;
 int var = 0;
 int turnOff = 0;
-int low = 85;
-int medium = 170;
-int high = 255;
+int low = 80;
+int medium = 100;
+int high = 120;
 
 void setup() { 
 	Serial.begin(115200); 

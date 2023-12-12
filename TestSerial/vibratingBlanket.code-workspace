@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "TestSerial",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
